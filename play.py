@@ -4,30 +4,27 @@ from board import Board
 if __name__ == '__main__':
   b = Board()
 
-  # TODO: build a better game loop
-  b.print_board()
+  idx = 0
   while True:
     b.print_board()
-    print("Player1 give x, y of the tile you want to occupy: ")
-    x1 = int(input("x: "))
-    y1 = int(input("y: "))
-    b.place_cross(x1, y1)
+    print("Player%d give x, y of the tile you want to occupy: " % ((idx%2)+1))
+    x = int(input("x: "))
+    y = int(input("y: "))
+
+    if idx % 2 == 0:
+      if not b.move(x, y, 1):
+        print("[-] Illegal Move")
+        exit(1)
+    else:
+      if not b.move(x, y, 2):
+        print("[-] Illegal Move")
+        exit(1)
 
     if b.check() == 0:
       pass
     else:
       break
-
-    b.print_board()
-    print("Player2 give x, y of the tile you want to occupy: ")
-    x2 = int(input("x: "))
-    y2 = int(input("y: "))
-    b.place_circle(x2, y2)
-
-    if b.check() == 0:
-      pass
-    else:
-      break
+    idx += 1
 
   b.print_board()
 

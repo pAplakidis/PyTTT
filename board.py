@@ -31,21 +31,17 @@ class Board:
       for j in range(len(self.board[i])):
         self.board[i][j] = 0
 
-  # TODO: check if x,y out of bounds
-  def place_cross(self, x, y):
+  def move(self, x, y, p):
     x -= 1
     y -= 1
-    if self.board[x][y] == 0:
-      self.board[x][y] = 1
-    else:
+    if x < 0 or x > 2 or y < 0 or y > 2:
       return None
-    return self
-
-  def place_circle(self, x, y):
-    x -= 1
-    y -= 1
+    
     if self.board[x][y] == 0:
-      self.board[x][y] = 2
+      if p == 1:
+        self.board[x][y] = 1
+      elif p == 2:
+        self.board[x][y] = 2
     else:
       return None
     return self
