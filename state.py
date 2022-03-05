@@ -1,6 +1,9 @@
+from board import Board
+
 class State:
-  def __init__(self):
-    pass
+  def __init__(self, board=None):
+    if board is None:
+      self.b = Board()
 
   def serialize(self):
     pass

@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 from board import Board
 
-if __name__ == '__main__':
-  b = Board()
-
+def main_loop(b):
   idx = 0
   while True:
     b.print_board()
@@ -26,5 +24,9 @@ if __name__ == '__main__':
       break
     idx += 1
 
+
+if __name__ == '__main__':
+  b = Board()
+  main_loop(b)
   b.print_board()
 
